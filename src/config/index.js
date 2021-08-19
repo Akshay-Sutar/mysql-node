@@ -1,7 +1,8 @@
-const dotenv = require("dotenv");
-const path = require("path");
+if (process.env.NODE_ENV === "development") {
+  const path = require("path");
+  require("dotenv").config({ path: path.join(__dirname, "..", "..", ".env") });
+}
 
-dotenv.config({ path: path.join(__dirname, "..", "..", ".env") });
 module.exports = {
   PORT: parseInt(process.env.PORT, 10) || 3000,
   mysql: {
